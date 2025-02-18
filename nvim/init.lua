@@ -25,3 +25,4 @@ vim.keymap.set({ "n", "t" }, "<A-t>", betterTerm.open, { desc = "Open terminal" 
 
 -- Conceal level for obsidian.nvim
 vim.opt.conceallevel = 1
+
