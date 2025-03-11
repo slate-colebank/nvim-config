@@ -2,7 +2,7 @@ return {
     {
         "williamboman/mason.nvim",
         opts = {
-            ensure_installed = { "lua_ls", "rust_analyzer", "markdown_oxide", "pylsp", "clangd", },
+            ensure_installed = { "lua_ls", "rust_analyzer", "markdown_oxide", "basedpyright", "clangd", "html-lsp", "ts_ls" },
         }
     },
     {
@@ -25,8 +25,10 @@ return {
 				lua_ls = {},
 				rust_analyzer = {},
 				markdown_oxide = {},
-				pylsp = {},
+				basedpyright = {},
 				clangd = {},
+				html = {},
+				ts_ls = {},
 			}
 		},
 		config = function()
@@ -54,11 +56,8 @@ return {
 			}
 
 			-- Python setup
-			lspconfig.pylsp.setup {
+			lspconfig.basedpyright.setup {
 				capabilities = capabilities,
-				settings = {
-					jedi_completion = { fuzzy = true }
-				}
 			}
 
 			-- Java setup
@@ -73,6 +72,17 @@ return {
 					inlay_hints = { enabled = true }
 				}
 
+			}
+
+			-- HTML setup
+			lspconfig.html.setup {
+				capabilities = capabilities,
+			}
+
+			-- Typescript setup
+			lspconfig.ts_ls.setup {
+				capabilities = capabilities,
+				settings = {}
 			}
 
 		end
