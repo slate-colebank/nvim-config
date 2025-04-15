@@ -58,6 +58,19 @@ return {
 			-- Python setup
 			lspconfig.basedpyright.setup {
 				capabilities = capabilities,
+				settings = {
+					basedpyright = {
+						analysis = {
+							typeCheckingMode = "basic",
+							inlayHints = {
+							  variableTypes = true,
+							  functionReturnTypes = true,
+							  callArgumentNames = true,
+							  functionParameterTypes = true,
+							}
+						}
+					}
+				}
 			}
 
 			-- Java setup
