@@ -10,11 +10,6 @@ return {
         -- dependencies = { "williamboman/mason.nvim" },
         opts = {} -- No need to pass options for mason-lspconfig
     },
-	-- nvim-java setup before lspconfig
-	{
-		'nvim-java/nvim-java',
-		opts = {}
-	},
     {
         "neovim/nvim-lspconfig",
         -- dependencies = { "williamboman/mason-lspconfig.nvim", "williamboman/mason.nvim"},
@@ -34,6 +29,8 @@ return {
 		config = function()
 			local lspconfig = require('lspconfig')
 			local capabilities = require('blink.cmp').get_lsp_capabilities()
+
+
 
 			-- Lua setup
 			lspconfig.lua_ls.setup {
@@ -58,9 +55,11 @@ return {
 			-- Python setup
 			lspconfig.basedpyright.setup {
 				capabilities = capabilities,
+
 				settings = {
 					basedpyright = {
 						analysis = {
+							typeCheckingMode = "standard",
 							typeCheckingMode = "basic",
 							inlayHints = {
 							  variableTypes = true,
@@ -70,7 +69,8 @@ return {
 							}
 						}
 					}
-				}
+				},
+
 			}
 
 			-- Java setup

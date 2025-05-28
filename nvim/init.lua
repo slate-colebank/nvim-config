@@ -19,13 +19,16 @@ vim.keymap.set("n", "<Leader>F", ":Telescope find_files<CR>", { noremap = true, 
 vim.keymap.set("n", "<Leader>O", ":Oil<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<Leader>L", ":Lazy<CR>", { noremap = true, silent = true })
 
+-- Toggle inlay hints
+vim.keymap.set("n", "<Leader>I", function()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { noremap = true, silent = true, desc = "Toggle inlay hints" })
+
 
 vim.opt.cursorline = true
-vim.opt.cursorcolumn = true
+-- vim.opt.cursorcolumn = true
 -- vim.cmd([[highlight CursorLineNr guibg=bg guifg=#00ff00]])
 
-local betterTerm = require('betterTerm')
-vim.keymap.set({ "n", "t" }, "<A-t>", betterTerm.open, { desc = "Open terminal" })
 
 -- require('java').setup()
 -- require('lspconfig').jdtls.setup({})
