@@ -1,1 +1,1 @@
-my neovin config
+my neovim config
