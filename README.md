@@ -1,1 +1,1 @@
-test
+my neovin config
