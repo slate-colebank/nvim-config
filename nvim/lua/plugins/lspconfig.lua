@@ -2,7 +2,7 @@ return {
     {
         "williamboman/mason.nvim",
         opts = {
-            ensure_installed = { "lua_ls", "rust_analyzer", "markdown_oxide", "basedpyright", "clangd", "html-lsp", "ts_ls" },
+            ensure_installed = { 'lua_ls', 'typescript-language-server', 'basedpyright' },
         }
     },
     {
@@ -37,19 +37,24 @@ return {
 				capabilities = capabilities,
 				settings = {
 					Lua = {
-						diagnostics = { globals = { "vim" } },
+						codeLens = {
+							enable = true
+						},
+						diagnostics = {
+							globals = { "vim" },
+							underline = true,
+							virtual_text = {
+								source = "if_many",
+							},
+						},
+						hint = {
+							enable = true,
+						},
+						inlay_hints = {
+							enabled = true,
+						},
 					},
 				}
-			}
-
-			-- Rust setup
-			lspconfig.rust_analyzer.setup {
-				capabilities = capabilities,
-			}
-
-			-- Markdown setup
-			lspconfig.markdown_oxide.setup {
-				capabilities = capabilities,
 			}
 
 			-- Python setup
@@ -59,7 +64,7 @@ return {
 				settings = {
 					basedpyright = {
 						analysis = {
-							typeCheckingMode = "standard",
+							-- typeCheckingMode = "standard",
 							typeCheckingMode = "basic",
 							inlayHints = {
 							  variableTypes = true,
@@ -73,24 +78,6 @@ return {
 
 			}
 
-			-- Java setup
-			lspconfig.jdtls.setup {
-				capabilities = capabilities
-			}
-
-			-- C setup
-			lspconfig.clangd.setup {
-				capabilities = capabilities,
-				settings = {
-					inlay_hints = { enabled = true }
-				}
-
-			}
-
-			-- HTML setup
-			lspconfig.html.setup {
-				capabilities = capabilities,
-			}
 
 			-- Typescript setup
 			lspconfig.ts_ls.setup {

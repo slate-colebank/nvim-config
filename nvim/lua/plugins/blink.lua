@@ -3,13 +3,28 @@ return {
 	version = '*',
 	opts = {
 		completion = {
+			accept = {
+				-- experimental auto brackets
+				auto_brackets = {
+					enabled = true,
+				},
+			},
 			list = {
 				selection = {
 					preselect = false,
 					auto_insert = false,
 				}
 			},
-			ghost_text = { enabled = true },
+			documentation = {
+				auto_show = true,
+				auto_show_delay_ms = 100,
+			},
+			ghost_text = {
+				enabled = true,
+			},
+		},
+		sources = {
+			default = { 'lsp', 'path', 'snippets', 'buffer' },  -- disable buffer to remove txt completions
 		},
 		keymap = {
 			preset = 'default',

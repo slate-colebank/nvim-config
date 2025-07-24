@@ -7,7 +7,8 @@ vim.cmd("set number relativenumber")
 
 require("config.lazy")
 
-vim.cmd("colorscheme cyberdream")
+-- vim.cmd("colorscheme cyberdream")
+vim.cmd("colorscheme gruvbox")
 
 
 
